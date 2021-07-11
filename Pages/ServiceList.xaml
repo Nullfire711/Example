@@ -1,0 +1,234 @@
+﻿<Page x:Class="OPExample.Pages.ServiceList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:OPExample.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="475" d:DesignWidth="534"
+      Title="ServiceList">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="111*"/>
+            <RowDefinition Height="7"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="White">
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="1*"/>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="195*"/>
+                <ColumnDefinition Width="116*"/>
+                <ColumnDefinition Width="117*"/>
+                <ColumnDefinition Width="106*"/>
+            </Grid.ColumnDefinitions>
+
+
+            <StackPanel
+                        Orientation="Vertical">
+                <TextBlock Text="Name Service"
+                           FontSize="10"
+                           Foreground="Gray"
+                           FontFamily="Microsoft YaHei Light"
+                           Padding="15 0 0 5"/>
+                <TextBox x:Name="TBName"
+                         Margin="15 0 15 0"
+                         Height="25"
+                         VerticalContentAlignment="Center"
+                         TextChanged="TBName_TextChanged" 
+                         Style="{DynamicResource TextBoxStyle1}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="1"
+                        Orientation="Vertical">
+                <TextBlock Text="MIN Price Service"
+                           FontSize="10"
+                           Foreground="Gray"
+                           FontFamily="Microsoft YaHei Light"
+                           Padding="15 0 0 5"/>
+                <TextBox x:Name="TBMin"
+                         Margin="15 0 15 0"
+                         Height="25"
+                         VerticalContentAlignment="Center" 
+                         TextChanged="TBMin_TextChanged" 
+                         KeyDown="TBMin_KeyDown" 
+                         Style="{DynamicResource TextBoxStyle1}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2"
+                        Orientation="Vertical">
+                <TextBlock Text="MAX Price Service"
+                           FontSize="10"
+                           Foreground="Gray"
+                           FontFamily="Microsoft YaHei Light"
+                           Padding="15 0 0 5"/>
+                <TextBox x:Name="TBMax"
+                         Margin="15 0 15 0"
+                         Height="25"
+                         VerticalContentAlignment="Center" 
+                         TextChanged="TBMax_TextChanged"
+                         KeyDown="TBMax_KeyDown" 
+                         Style="{DynamicResource TextBoxStyle1}" />
+            </StackPanel>
+
+            <TextBlock Grid.Column="3"
+                       Background="#D1D6E3"
+                       Text="SERVICE LIST"
+                       FontFamily="Microsoft YaHei Light"
+                       Foreground="#14285E"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Top"
+                       Padding="5"
+                       Margin="0,10,10,0"
+                       Height="26"
+                       Width="81"/>
+
+        </Grid>
+
+
+        <Grid Grid.Row="2"
+              Background="White">
+            <ListView
+                x:Name="LVPage" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="200" Height="100">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.8*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Margin="5">
+                                <Image.Source>
+                                    <Binding Path="image">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/OPExample;component/Resource/help.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                            <StackPanel Grid.Column="1"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Path=ServiceName}" TextWrapping="Wrap" Margin="5 0 5 0"/>
+                                <TextBlock Text="{Binding Path=Price}" Margin="5 0 5 0"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+
+
+        <Grid Grid.Row="4"
+              Background="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal"
+                        VerticalAlignment="Center">
+                <TextBlock Grid.Column="0"
+                           Text="OPTIONS"
+                           FontFamily="Microsoft YaHei Light"
+                           Foreground="#14285E"
+                           HorizontalAlignment="Left"
+                           Padding="5"
+                           Margin="10 0 0 0"/>
+                
+                <Image Source="/OPExample;component/Resource/option.png"
+                       Width="20" Margin="10 0 0 0" 
+                       VerticalAlignment="Center"/>
+            </StackPanel>
+            
+            <Button x:Name="AddService"
+                    Grid.Row="1"
+                    FontSize="12"
+                    FontFamily="Microsoft YaHei Light"
+                    Foreground="#F0EDED"
+                    Background="#2C4380"
+                    BorderBrush="#F0EDED"
+                    Height="30"
+                    Width="130" Click="AddService_Click">
+                
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="2" />
+                    </Style>
+                </Button.Resources>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/OPExample;component/Resource/add.png"
+                           Width="15" 
+                           Margin="0 0 5 0" />
+                    <TextBlock Text="ADD NEW"/>
+                </StackPanel>
+                
+            </Button>
+            <Button x:Name="EditBtn"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontSize="12"
+                    FontFamily="Microsoft YaHei Light"
+                    Foreground="#F0EDED"
+                    Background="#2C4380"
+                    BorderBrush="#F0EDED"
+                    Height="30"
+                    Width="130" 
+                    Click="Button_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" 
+                                Value="2" />
+                    </Style>
+                </Button.Resources>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/OPExample;component/Resource/edit.png" 
+                           Width="15" 
+                           Margin="0 0 5 0" />
+                    <TextBlock Text="EDIT"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="DeleteBtn"
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    FontSize="12"
+                    FontFamily="Microsoft YaHei Light"
+                    Foreground="#F0EDED"
+                    Background="#2C4380"
+                    BorderBrush="#F0EDED"
+                    Height="30"
+                    Width="130" 
+                    Click="DeleteBtn_Click">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="2" />
+                    </Style>
+                </Button.Resources>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/OPExample;component/Resource/delete.png"
+                           Width="15" 
+                           Margin="0 0 5 0" />
+                    <TextBlock Text="DELETE"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+    </Grid>
+</Page>

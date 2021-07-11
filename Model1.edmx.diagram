@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="782429a315384a81bf230e2e08ce2ef2" Name="Diagram1" ZoomLevel="85">
+        <EntityTypeShape EntityType="OPProjectModel.Role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="OPProjectModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OPProjectModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="OPProjectModel.FK_User_Role" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="OPProjectModel.Service" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="OPProjectModel.Booking" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="OPProjectModel.FK_Booking_Service" />
+        <AssociationConnector Association="OPProjectModel.FK_Booking_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
